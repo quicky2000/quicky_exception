@@ -26,73 +26,80 @@ namespace quicky_exception
   class quicky_base_exception
   {
   public:
-    inline quicky_base_exception(const unsigned int & p_line,
-				 const std::string & p_file);
-    inline const unsigned int & get_line(void)const;
-    inline const std::string & get_file(void)const;
-    inline virtual ~quicky_base_exception(void)throw (){}
+    inline quicky_base_exception (const unsigned int &p_line,
+				  const std::string & p_file);
+    inline const unsigned int &get_line (void) const;
+    inline const std::string & get_file (void) const;
+    inline virtual ~ quicky_base_exception (void) throw ()
+    {
+    }
   private:
     const unsigned int m_line;
     const std::string m_file;
   };
 
-  class quicky_runtime_exception: public std::runtime_error, public quicky_base_exception
+  class quicky_runtime_exception:public std::runtime_error,
+    public quicky_base_exception
   {
   public:
-    inline quicky_runtime_exception(const std::string & p_msg,
-				    const unsigned int & p_line,
-				    const std::string & p_file);
+    inline quicky_runtime_exception (const std::string & p_msg,
+				     const unsigned int &p_line,
+				     const std::string & p_file);
   private:
   };
 
-  class quicky_logic_exception: public std::logic_error, public quicky_base_exception
+  class quicky_logic_exception:public std::logic_error,
+    public quicky_base_exception
   {
   public:
-    inline quicky_logic_exception(const std::string & p_msg,
-				  const unsigned int & p_line,
-				  const std::string & p_file);
+    inline quicky_logic_exception (const std::string & p_msg,
+				   const unsigned int &p_line,
+				   const std::string & p_file);
   private:
   };
 
 
   //----------------------------------------------------------------------------
-  quicky_base_exception::quicky_base_exception(const unsigned int & p_line,
-					       const std::string & p_file):
-    m_line(p_line),
-    m_file(p_file)
-      {
-      }
+  quicky_base_exception::quicky_base_exception (const unsigned int &p_line,
+						const std::
+						string &
+						p_file):m_line (p_line),
+    m_file (p_file)
+  {
+  }
 
 
-    //----------------------------------------------------------------------------
-    const unsigned int & quicky_base_exception::get_line(void)const
-      {
-	return m_line;
-      }
+  //----------------------------------------------------------------------------
+  const unsigned int &quicky_base_exception::get_line (void) const
+  {
+    return m_line;
+  }
 
-    //----------------------------------------------------------------------------
-    const std::string & quicky_base_exception::get_file(void)const
-      {
-	return m_file;
-      }
+  //----------------------------------------------------------------------------
+  const std::string & quicky_base_exception::get_file (void) const
+  {
+    return m_file;
+  }
 
-    //----------------------------------------------------------------------------
-    quicky_runtime_exception::quicky_runtime_exception(const std::string & p_msg,
-						       const unsigned int & p_line,
-						       const std::string & p_file):
-      std::runtime_error(p_msg),
-      quicky_base_exception(p_line,p_file)
-	{
-	}
+  //----------------------------------------------------------------------------
+  quicky_runtime_exception::quicky_runtime_exception (const std::
+						      string & p_msg,
+						      const unsigned int
+						      &p_line,
+						      const std::
+						      string & p_file):std::
+    runtime_error (p_msg), quicky_base_exception (p_line, p_file)
+  {
+  }
 
-      //----------------------------------------------------------------------------
-      quicky_logic_exception::quicky_logic_exception(const std::string & p_msg,
-						     const unsigned int & p_line,
-						     const std::string & p_file):
-	std::logic_error(p_msg),
-	quicky_base_exception(p_line,p_file)
-	  {
-	  }
+  //----------------------------------------------------------------------------
+  quicky_logic_exception::quicky_logic_exception (const std::string & p_msg,
+						  const unsigned int &p_line,
+						  const std::
+						  string & p_file):std::
+    logic_error (p_msg), quicky_base_exception (p_line, p_file)
+  {
+  }
 
 
 }
