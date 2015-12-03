@@ -19,6 +19,7 @@
 #define _QUICKY_EXCEPTION_H_
 
 #include <stdexcept>
+#include <string>
 
 namespace quicky_exception
 {
