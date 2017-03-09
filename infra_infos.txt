@@ -1,4 +1,4 @@
 depend:
 CFLAGS:-Wall -g
 LDFLAGS:
-
+env_variables:
