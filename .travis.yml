@@ -24,7 +24,9 @@ before_install:
   - cd build
 
 script:
-  - generate_makefile quicky_exception
-  - make test
-  - ./bin/quicky_exception.exe
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then generate_makefile quicky_exception; make test; ./bin/quicky_exception.exe; fi
+  - cd $MY_LOCATION; mkdir cmake_build; cd cmake_build
+  - cmake $QUICKY_REPOSITORY/quicky_exception
+  - make
+  - ./quicky_exception
 #EOF
